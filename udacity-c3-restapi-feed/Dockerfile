@@ -9,4 +9,5 @@ RUN npm ci
 # Bundle app source
 COPY . .
 EXPOSE 8080
+CMD [ "apt-get", "update" ]
 CMD [ "npm", "run", "prod" ]
