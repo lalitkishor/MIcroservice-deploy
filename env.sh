@@ -1,0 +1,11 @@
+export POSTGRESS_USERNAME=postgres
+export POSTGRESS_PASSWORD=12345678
+export POSTGRESS_DB=feed
+export POSTGRESS_HOST=feed.cxz4jkxv8kjj.us-east-2.rds.amazonaws.com
+export AWS_REGION=us-east-2b
+export AWS_PROFILE=''
+export AWS_BUCKET=static-website-udacityproject
+export URL=''
+export JWT_SECRET='coderlalit'
+export AWS_ACCESS_KEY_ID=AKIAT3M4K4JKVH3KWABO
+export AWS_SECRET_ACCESS_KEY=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
