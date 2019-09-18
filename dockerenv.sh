@@ -1,0 +1,9 @@
+POSTGRESS_USERNAME=postgres
+POSTGRESS_PASSWORD=12345678
+POSTGRESS_DB=feed
+POSTGRESS_HOST=feed.cxz4jkxv8kjj.us-east-2.rds.amazonaws.com
+AWS_REGION=us-east-2b
+AWS_PROFILE=''
+AWS_BUCKET=static-website-udacityproject
+URL=''
+JWT_SECRET='coderlalit'

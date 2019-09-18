@@ -2,18 +2,18 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    service: frontend
+    app: frontend
   name: frontend
 spec:
   replicas: 2
   template:
     metadata:
       labels:
-        service: frontend
+        app: frontend
         api: external        
     spec:
       containers:
-      - image: lalitcoder05/udacity-frontend:local
+      - image: lalitcoder05/udacity-frontend
         name: frontend
         imagePullPolicy: Always          
         ports:
@@ -26,4 +26,3 @@ spec:
             memory: "1024Mi"
             cpu: "500m"                
       restartPolicy: Always
-

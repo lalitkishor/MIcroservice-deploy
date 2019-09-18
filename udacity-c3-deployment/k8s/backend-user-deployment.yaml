@@ -2,14 +2,14 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    service: backend-user
+    app: backend-user
   name: backend-user
 spec:
   replicas: 2
   template:
     metadata:
       labels:
-        service: backend-user
+        app: backend-user
     spec:
       containers:
       - image: lalitcoder05/udacity-restapi-user
