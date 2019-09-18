@@ -16,6 +16,7 @@ before_install:
   - sudo mv ./kubectl /usr/local/bin/kubectl
   - mkdir ${HOME}/.kube
   - cp config ${HOME}/.kube/config
+  - echo $PATH
   - kubectl get all 
 
 install:
