@@ -22,7 +22,7 @@ before_install:
   - sudo cp ./aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
   - chmod +x ./env.sh
   - ./env.sh
-  - kubectl get all 
+  - aws s3 ls
 
 install:
   - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel 
