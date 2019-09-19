@@ -22,6 +22,4 @@ users:
       - -i
       - wonderful-hideout-1568893157
       command: aws-iam-authenticator
-      env:
-      - name: AWS_PROFILE
-        value: first
+      env: null
