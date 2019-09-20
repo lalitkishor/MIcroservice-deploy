@@ -41,8 +41,8 @@ install:
   - docker push lalitcoder05/udacity-restapi-feed:${TRAVIS_JOB_ID}
   - docker push lalitcoder05/udacity-restapi-user:${TRAVIS_JOB_ID}
   - docker push lalitcoder05/udacity-frontend:${TRAVIS_JOB_ID}
-  - kubectl rolling-update reverseproxy --image=lalitcoder05/reverseproxy:${TRAVIS_JOB_ID}
-  - kubectl rolling-update udacity-restapi-feed --image=lalitcoder05/udacity-restapi-feed:${TRAVIS_JOB_ID}
-  - kubectl rolling-update udacity-restapi-user --image=lalitcoder05/udacity-restapi-user:${TRAVIS_JOB_ID}
-  - kubectl rolling-update udacity-frontend --image=lalitcoder05/udacity-frontend:${TRAVIS_JOB_ID}
-
+  - kubectl set image deployment/reverseproxy reverseproxy=lalitcoder05/reverseproxy:${TRAVIS_JOB_ID}
+  - kubectl set image deployment/backend-feed backend-feed=lalitcoder05/udacity-restapi-feed:${TRAVIS_JOB_ID}
+  - kubectl set image deployment/backend-user backend-user=lalitcoder05/udacity-restapi-user:${TRAVIS_JOB_ID}
+  - kubectl set image deployment/frontend frontend=lalitcoder05/udacity-frontend:${TRAVIS_JOB_ID}
+  - kubectl get all
