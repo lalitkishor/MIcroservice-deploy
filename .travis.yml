@@ -24,7 +24,7 @@ before_install:
   - cp ./aws ${HOME}/.aws/credentials
   - kubectl get all
   - mkdir ${HOME}/.docker
-  - cp ./needed.json ${HOME}/.docker/daemon.json
+  - cp ./needed.json ${HOME}/.docker/config.json
 
 install:
   - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel 
