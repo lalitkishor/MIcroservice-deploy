@@ -15,7 +15,7 @@ before_install:
   - wget https://github.com/docker/docker-credential-helpers/releases/download/v0.6.0/docker-credential-pass-v0.6.0-amd64.tar.gz
   - tar -xf docker-credential-pass-v0.6.0-amd64.tar.gz
   - chmod +x docker-credential-pass
-  - sudo mv docker-credential-pass /usr/local/bin/
+  - sudo mv docker-credential-pass /usr/local/bin/docker-credential-pass
   - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
   - chmod +x ./kubectl
   - sudo mv ./kubectl /usr/local/bin/kubectl
@@ -28,8 +28,7 @@ before_install:
   - mkdir ${HOME}/.aws/
   - cp ./aws ${HOME}/.aws/credentials
   - kubectl get all
-  - mkdir ${HOME}/.docker
-  - cp ./needed.json ${HOME}/.docker/config.json
+  - docker login --username lalitcoder05 --password 2bfd3462-aa5b-4eb3-8fe2-6f79e7997753
 
 install:
   - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build
