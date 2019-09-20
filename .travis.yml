@@ -24,7 +24,7 @@ before_install:
   - cp ./needed.json ${HOME}/.docker/config.json
 
 install:
-  - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel 
+  - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build
   - echo $TRAVIS_JOB_ID
   - docker tag lalitcoder05/reverseproxy:latest lalitcoder05/reverseproxy:${TRAVIS_JOB_ID}
   - docker tag lalitcoder05/udacity-restapi-feed:latest lalitcoder05/udacity-restapi-feed:${TRAVIS_JOB_ID}
