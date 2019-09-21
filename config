@@ -1,0 +1,27 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRFNU1Ea3lNREExTlRZeE9Wb1hEVEk1TURreE56QTFOVFl4T1Zvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBT1JUCmtLOVRZWmtvYXZtYmNyM2ZoeDVsdXdPdnM5OUVZS0VBaENoSG16TzFIZlgwZG51WmR0emQzSnVkbGZBMk92bncKd0FKUDRVZ3hSa0JsYmEvZmRndWhCU3h1ZEU1UnNhU3dNdEdBbkxVbk5YUllXODg3OHNVNDI4ZjU4VU5sRnk0OAp0T1EzdmJjMGdUblhaeGVXaXlWeDQyNDJnWElHWUtEcGpDR0xYeEdJZEVjUERIcURLcjlqdlZLMVJFemVOSWtwClhwTkIzWkVaRm1iN0JRaWl1aHJwaldrK2ZpU0kvSG9jNWh2UzFWcUplTkVEWTFXY2VxcU5hMTRleDVpRUg4cWEKRDJaWDFvR2VCSG1xWTVYL2Y1ZFYyWEZHOHBBakpSSHF0TkJVZE5objRNeFZwZlpIM3RvaEJ4bjl2bVZwYWJDSwo5VnJSYnUzZ2E5dVc4UmRSNHY4Q0F3RUFBYU1qTUNFd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFDZFNYRGFGeXR2bHlBUnJzSmNuSVNpcDNuQWIKdzBhL2l3V1hXakxxblBWTm5mMVpkcWhobjF2WS9qUDZEVUgyUWNaS3psU3YvSEJLK1RDTlFDa01IUC9SdUhhbgpLVHptVElZZmcvMWdTOGh5MXh5YlhBM3FlNkpCNzkzalkxWk1oaVpYc3FmSnhuc3p5TlJVblVTdkdtNkY4SG1UCm1iYXN2SWlFa1ZYRTJ4YnkremVTTjF0Mk56Q3dOVmJTaEhiZkxEZmdQQ3VwdkZ2UG9ld25wbnh2TS9MNkRmczIKclhpOTZjRk53US91VzJBYlluV0k1R2liT3hpb1JQelUzS3JjVitnN0FheDhXdjFxKytlSlpLdmpJSlF6U2Q2awp4Z2FvNnFaTmplWHRaWGVHNFNNTkNJU2RZWlI2VjNvQkEwZGdsUDNDUmpnWEtUVUxlMk5VUVpNNnhidz0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+    server: https://0F1FCD84EFB9B4B1D288DC33EA56838A.sk1.us-east-1.eks.amazonaws.com
+  name: attractive-hideout-1568958484.us-east-1.eksctl.io
+contexts:
+- context:
+    cluster: attractive-hideout-1568958484.us-east-1.eksctl.io
+    user: second@attractive-hideout-1568958484.us-east-1.eksctl.io
+  name: second@attractive-hideout-1568958484.us-east-1.eksctl.io
+current-context: second@attractive-hideout-1568958484.us-east-1.eksctl.io
+kind: Config
+preferences: {}
+users:
+- name: second@attractive-hideout-1568958484.us-east-1.eksctl.io
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1alpha1
+      args:
+      - token
+      - -i
+      - attractive-hideout-1568958484
+      command: aws-iam-authenticator
+      env:
+      - name: AWS_PROFILE
+        value: second

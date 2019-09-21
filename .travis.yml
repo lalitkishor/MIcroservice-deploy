@@ -1,0 +1,48 @@
+language: minimal
+
+services: docker
+
+env:
+  - DOCKER_COMPOSE_VERSION=1.23.2
+
+before_install:
+  - export PATH="${PATH}:/usr/local/bin"
+  - docker -v && docker-compose -v
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin/docker-compose
+  - wget https://github.com/docker/docker-credential-helpers/releases/download/v0.6.0/docker-credential-pass-v0.6.0-amd64.tar.gz
+  - tar -xf docker-credential-pass-v0.6.0-amd64.tar.gz
+  - chmod +x docker-credential-pass
+  - sudo mv docker-credential-pass /usr/local/bin/docker-credential-pass
+  - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+  - chmod +x ./kubectl
+  - sudo mv ./kubectl /usr/local/bin/kubectl
+  - mkdir ${HOME}/.kube
+  - cp config ${HOME}/.kube/config
+  - echo $PATH
+  - curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator
+  - chmod +x ./aws-iam-authenticator
+  - sudo cp ./aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
+  - mkdir ${HOME}/.aws/
+  - cp ./aws ${HOME}/.aws/credentials
+  - kubectl get all
+  - docker login --username lalitcoder05 --password 2bfd3462-aa5b-4eb3-8fe2-6f79e7997753
+
+install:
+  - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build
+  - echo $TRAVIS_JOB_ID
+  - docker tag lalitcoder05/reverseproxy:latest lalitcoder05/reverseproxy:${TRAVIS_JOB_ID}
+  - docker tag lalitcoder05/udacity-restapi-feed:latest lalitcoder05/udacity-restapi-feed:${TRAVIS_JOB_ID}
+  - docker tag lalitcoder05/udacity-restapi-user:latest lalitcoder05/udacity-restapi-user:${TRAVIS_JOB_ID}
+  - docker tag lalitcoder05/udacity-frontend:latest lalitcoder05/udacity-frontend:${TRAVIS_JOB_ID}
+  - docker push lalitcoder05/reverseproxy:${TRAVIS_JOB_ID}
+  - docker push lalitcoder05/udacity-restapi-feed:${TRAVIS_JOB_ID}
+  - docker push lalitcoder05/udacity-restapi-user:${TRAVIS_JOB_ID}
+  - docker push lalitcoder05/udacity-frontend:${TRAVIS_JOB_ID}
+  - kubectl set image deployment/reverseproxy reverseproxy=lalitcoder05/reverseproxy:${TRAVIS_JOB_ID}
+  - kubectl set image deployment/backend-feed backend-feed=lalitcoder05/udacity-restapi-feed:${TRAVIS_JOB_ID}
+  - kubectl set image deployment/backend-user backend-user=lalitcoder05/udacity-restapi-user:${TRAVIS_JOB_ID}
+  - kubectl set image deployment/frontend frontend=lalitcoder05/udacity-frontend:${TRAVIS_JOB_ID}
+  - kubectl get all
